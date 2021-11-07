@@ -1,0 +1,608 @@
+:root{
+	--main: #7c5a3b;
+	--second: #1183a6;
+
+	--gray_light : #efe2e2;
+	--gray : #363636;
+	--gray_dark : #2E2E2E;
+
+	--menu_height : 60px;
+	--margin_content: 70px;
+
+	--radius_content: 10px;
+}
+
+/*#########################		GLOBAL	#########################*/
+
+p.litle{
+	font-size: 18px;
+	padding: 10px;
+}
+
+select{
+	cursor: pointer;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	background-color: var(--gray_light);
+	width: 100% ;
+	border: none;
+}
+
+input[type=range] {
+  height: 34px;
+  -webkit-appearance: none;
+  margin: 10px 0;
+  width: 100%;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 12px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px var(--gray_dark);
+  background: var(--gray_light);
+  border-radius: 25px;
+  border: 1px solid var(--gray);
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #828282;
+  border: 1px solid var(--gray);
+  height: 26px;
+  width: 17px;
+  border-radius: 5px;
+  background: var(--main);
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -8px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: var(--gray_light);
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 12px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px var(--gray_dark);
+  background: var(--gray_light);
+  border-radius: 25px;
+  border: 1px solid var(--gray);
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #828282;
+  border: 1px solid var(--gray);
+  height: 26px;
+  width: 17px;
+  border-radius: 5px;
+  background: var(--main);
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 12px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: var(--gray_light);
+  border: 1px solid var(--gray);
+  border-radius: 50px;
+  box-shadow: 0px 0px 0px var(--gray_dark);
+}
+input[type=range]::-ms-fill-upper {
+  background: var(--gray_light);
+  border: 1px solid var(--gray);
+  border-radius: 50px;
+  box-shadow: 0px 0px 0px var(--gray_dark);
+}
+input[type=range]::-ms-thumb {
+  margin-top: 1px;
+  box-shadow: 1px 1px 1px #828282;
+  border: 1px solid var(--gray);
+  height: 26px;
+  width: 17px;
+  border-radius: 5px;
+  background: var(--main);
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: var(--gray_light);
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: var(--gray_light);
+}
+
+
+input{
+	border: solid 1px var(--second);
+	background-color: var(--gray_light);
+	box-shadow: none;
+	border-radius: 5px;
+	margin: 4px;
+}
+
+input[type='text'], input[type='password']{
+	border: none;
+	border-bottom: solid 1px var(--second);
+	width: 30%;
+	height: 2%;
+	padding: 3px;
+	outline: none;	
+}
+
+textarea{
+	border-radius: 5px;
+	resize: none;
+	background-color: var(--gray_light);
+	box-shadow: none;
+	border: solid 1px var(--second);
+	margin: 3px;
+	outline: none;
+	max-width: 80%;
+
+}
+
+body{
+	background-image: url("../images/background.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	margin: 0px;
+	padding: 0px;
+}
+
+#content{
+	margin: 10px var(--margin_content);
+	background-color: var(--gray_light);
+	height: all;
+	border-radius: var(--radius_content);
+}
+
+*{
+	color: var(--gray);
+	text-decoration: none;
+}
+
+a{
+	color: var(--second);
+}
+
+p{font-size: 25px;}
+
+h3{
+	font-size: 35px;
+}
+
+h2{
+	font-size: 40px;
+}
+
+h1{
+	font-size: 45px;
+}
+
+.error{
+	padding: 10px 0;
+	position: relative;
+	color: var(--gray_light);
+	font-size: 30px;
+	background-color: red;
+	border: solid 2px darkred;
+	text-align: center;
+	border-radius: 5px;
+	width: 70%;
+	left: 15%;
+}
+
+.success{
+	padding: 10px 0;
+	position: relative;
+	color: var(--gray_light);
+	font-size: 30px;
+	background-color: green;
+	border: solid 2px darkgreen;
+	text-align: center;
+	border-radius: 5px;
+	width: 70%;
+	left: 15%;
+}
+
+/*#########################		MENU NAV	#########################*/
+
+nav > ul{
+	display: flex;
+	text-align: center;
+	box-shadow: 0px 1px 2px 1px var(--main);
+	height: var(--menu_height);
+}
+
+nav ul {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+	font-size: 25px;
+	font-family: sans-serif monospace;
+	position: relative;
+	z-index: 10000;
+}
+nav ul li{
+	padding: 0px,30px;
+}
+
+nav > ul > li {
+	background-image: url("../images/wood-texture.jpg");
+	background-size: cover;
+	position: relative;
+	height: 100%;
+	flex: 1;
+	border-left: solid 1px var(--gray_dark);
+}
+
+nav > ul > li > a{
+	position: absolute;
+	transform: translate(-50%, 25%);
+}
+
+li a {
+	text-shadow: 	1px 1px 0 var(--gray_dark),
+					1px -1px 0 var(--gray_dark),
+					-1px 1px 0 var(--gray_dark),
+					-1px -1px 0 var(--gray_dark);
+	color: var(--gray_light);
+	font-weight: bold;
+	height: 100%;
+	width: 100%;
+
+}
+
+.menu-deroulant > a:after{
+	content: ' ❯';
+	display: inline-block;
+	margin-left: 7px;
+	font-size: 15px;
+}
+
+.sous-menu{
+	background-image: url("../images/wood-texture.jpg");
+	background-size: cover;
+	margin-top: var(--menu_height);
+	width: 100%;
+	text-align: left;
+	border-radius: 2px;
+	overflow: hidden;
+	max-height: 0;
+}
+
+.sous-menu > li > a{
+	border-top: solid 1px var(--gray_dark);
+	height: 50px;
+	padding-left: 20px;
+	width: 100%;
+	align-items: center;
+	display: flex;
+}
+
+nav > ul > li:hover > a{
+	color: var(--second);
+}
+
+.menu-deroulant:hover > a:after{
+	animation: rotationFleche 0.2s linear forwards;
+}
+
+.menu-deroulant:hover > .sous-menu{
+	animation: SousMenu 1s forwards;
+}
+
+
+.sous-menu > li:hover > a {
+  	color: var(--second);
+}
+
+/*#########################		SLIDER	#########################*/
+
+#slide{
+	border-radius: var(--radius_content) var(--radius_content) 0px 0px ;
+	width: 100%;
+	height: 380px;
+	object-fit: cover;
+}
+
+
+#prev, #next{
+	cursor: pointer;
+	position: absolute;
+	top: 250px;
+	width: auto;
+	padding: 16px;
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
+	transition: 0.6s ease;
+	user-select: none;
+	opacity: 0;
+}
+
+#next{
+	right: var(--margin_content);
+	border-radius: 3px 0 0 3px;
+}
+
+#prev{
+	left: var(--margin_content);
+	border-radius: 0 3px 3px 0;
+}
+
+#prev:hover, #next:hover{
+	background-color: var(--gray_dark);
+}
+#slider:hover #prev, #slider:hover #next{
+	opacity: 1;
+}
+
+
+.dot{
+	position: relative;
+	bottom: 0px;
+	cursor: pointer;
+	height: 15px;
+	width: 15px;
+	margin: 0 2px;
+	background-color: var(--main);
+	border-radius: 50%;
+	display: inline-block;
+	transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover{
+	background-color: var(--second);
+}
+/*#########################		RECOMENDEUR DE MAISON 	#########################*/
+/*
+#house_recommender{
+	display: flex;
+	width: 90%;
+	position: relative;
+	left: 4%;
+	margin: 50px 0;
+	padding: 10px;
+	background-color: var(--gray);
+	box-shadow: 0px 0px 25px 25px var(--gray);
+}
+
+#house_recommender *{
+	border-radius: 5px;
+	color: var(--gray_dark);
+	margin: 0px;
+	vertical-align: middle;
+	text-align: center;
+	width: 33%;
+	height: 100%;
+
+}
+
+#house_recommender #search_resulte .result{
+	width: 30%;
+	padding: 20px;
+	background-color: var(--gray_light);
+	border: solid 2px var(--second);
+	color: var(--second);
+}
+
+#house_recommender #search_resulte{
+	display: inline-flex;
+	margin: 0px 0px 0px 10px;
+}
+
+#house_recommender .time, #house_recommender .nb_personne{
+	padding: 20px 0px;
+	margin: 0px 10px;
+	background-color: var(--gray_light);
+}
+
+#house_recommender .time::after{
+	content: ' ▼ ';
+	border-left: dashed 2px var(--gray);
+}
+
+#house_recommender .time, #house_recommender .time{
+	height: 100%;
+	display: flex;
+	border: none;
+	margin: 0px;
+
+}
+
+#house_recommender .nb_personne *{
+	background-color: var(--gray_light);
+}
+
+#house_recommender .nb_personne input{
+	height: 10px;
+}*/
+
+/*#########################		viniete de des maison	#########################*/
+
+.house_case{
+	transform: rotate(5deg);
+	height: 100px;
+	width: 400px;
+	border: solid var(--main);
+	text-align: center;
+	box-shadow: 15px 4px 1px 0px var(--gray_dark);
+	margin: 20px 10%;
+}
+
+.house_case h3{
+	color: var(--gray_light);
+	text-shadow: 2px 2px 0px black;
+	margin: 0;
+	padding-top: 20px;
+}
+
+.house_case p{
+	color: var(--gray_light);
+	font-weight: bold;
+	font-size: 20px;
+	text-shadow: 	1px 1px 0 var(--gray_dark),
+					1px -1px 0 var(--gray_dark),
+					-1px 1px 0 var(--gray_dark),
+					-1px -1px 0 var(--gray_dark);
+	padding: 0px;
+	margin: 0px;
+
+}
+
+#list_houses{
+	display: flex;
+}
+
+#tiny{
+	background-image: url("../images/tiny-house.jpg");
+	background-size: cover;
+	background-position: center;
+}
+
+#apart{
+	background-image: url("../images/20210808_200252.jpg");
+	background-size: cover;
+	background-position: center;
+
+}
+
+
+/*#########################		ADMIN	#########################*/
+#back_btn{
+	position: absolute;
+	border: solid 3px var(--second);
+	border-radius: 6px;
+	left: 85px;
+}
+
+#back_btn img{
+	padding: 5px ;
+}
+
+#admin-content{
+	display: grid;
+}
+
+#frist-content{
+	grid-column: 1;
+	grid-row: 1;
+}
+#second-content{
+	grid-column: 2;
+	grid-row: 1;
+	border-left: 1px;
+}
+#third-content{
+	grid-row: 2;
+	grid-column-start: 1;
+	grid-column-end: 3;
+	width: 100%;
+	border-bottom: 1px;
+	border-left: 1px;
+}
+#frist-content, #second-content, #third-content{
+	border: solid var(--gray);
+	text-align: center;
+}
+.house_modify{
+	border-top: dashed 1px var(--gray);
+	padding-bottom: 10px;
+}
+.contactTitle{
+	border-bottom: dashed 1px var(--gray);
+	padding-bottom: 10px;	
+}
+.contactTitle p.detaille{
+	font-size: 13px;
+}
+
+#add_planning{
+	border-top: solid 2px var(--gray);
+}
+
+/*#########################		PAGE LOGEMENT	#########################*/
+#found_date{
+	text-align: center;
+}
+
+#found_date input{
+	width: 30%;
+	height: 100%;
+	cursor: pointer;
+	height: 100px;
+	text-align: center;
+	background-color: var(--main);
+	font-size: 30px;
+	font-weight: bold;
+	color: var(--gray_light);
+	border: solid 2px var(--second);
+	text-shadow: 1px 1px 0 var(--gray_dark),
+		1px -1px 0 var(--gray_dark),
+		-1px 1px 0 var(--gray_dark),
+		-1px -1px 0 var(--gray_dark);
+}
+
+
+#hebergement h3{
+	text-align: center;
+}
+#hebergement p{
+	margin: 0px 40px;
+}
+
+#hebergement p .img_hebergement{
+	text-align: center;
+	margin: 5px 10px;
+	box-shadow: 4px 4px 0 var(--main);
+	max-width: 90%;
+	object-fit: cover;
+}
+
+/*#########################		Ecran reduit	#########################*/
+@media screen and (max-width:  720px){
+	#admin-content{
+		display: unset;
+	}
+}
+
+@media screen and (max-width:  660px){
+	.menu-deroulant > a:after{
+		content: none;
+	}
+}
+
+/*#########################		ANIMATION	#########################*/
+
+@keyframes rotationFleche{
+	0%{
+		transform: rotate(0deg);
+	}
+	100%{
+		transform: rotate(90deg);
+	}
+}
+
+@keyframes SousMenu{
+	0%{
+		box-shadow: 0px 3px 3px 1px var(--main);
+		background-color: var(--main);
+	}
+	100%{
+		max-height: 50em;
+		box-shadow: 0px 3px 3px 2px var(--main);
+		background-color: var(--gray_dark);
+	}
+}
+

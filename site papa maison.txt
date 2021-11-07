@@ -1,0 +1,32 @@
+Main color : orange #FA9635
+
+Second : #0073f2 or #65AFFF
+
+Gris:
+	Fonsé : #2E2E2E
+	normal : #626262
+	clair : #deddd3
+
+
+faire un call de fonction pour le header avec comme argument le nom de la page
+
+acceuille:
+	curseur de personne max
+	durée
+	petit phrase de bienvenue
+	4 carré de présentation pour chaque maison(nom, image
+
+nos gites:
+	liste avec gross detaile
+activivté:
+	redirection vdv
+
+contacte:
+	formulaire style vdv
+
+
+A faire ordre de papa:
+bon cadeau
+
+menu : boutique en ligne, hébergement(a la place  
+visuelle de bois menu déroulant
