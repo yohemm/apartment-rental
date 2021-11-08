@@ -44,16 +44,18 @@
 			}
 			if (isset($_POST['horraire'])) {
 				if (!empty($_POST['arriver'] && $_POST['depart'])) {
+
 					/*verifie le format de la date*/
 					if (preg_match('%^20[0-9]{2}-[01][0-9]-[0-3][0-9]$%', $_POST['arriver']) && preg_match('%^20[0-9]{2}-[01][0-9]-[0-3][0-9]$%', $_POST['depart'])) {
 						if (Order_date($_POST['arriver'], $_POST['depart'])) {/*verifier que les horraire soit dans l'ordre*/
-								$query = $db->query("SELECT `house`.name, `reservation`.date_arriver, `reservation`.date_depart FROM `house` JOIN `reservation` ON `house`.name = `reservation`.hebergement WHERE `house`.name = '$name'");
+
+							$query = $db->query("SELECT `house`.name, `reservation`.date_arriver, `reservation`.date_depart FROM `house` JOIN `reservation` ON `house`.name = `reservation`.hebergement WHERE `house`.name = '$name'");
 							$all_reservations = $query->fetchALL();
 							$date_disponible = false;
 
 							// verifie la diponibilité des date
 							foreach ($all_reservations as $reservation) {
-								if (Order_date($reservation[1], $_POST['arriver'] )) {
+								if (Order_date($reservation[1], $_POST['arriver'] )) { #verifie que les date sois dans le bon ordre
 									if (Order_date($reservation[2], $_POST['arriver'])) {
 										$date_disponible = true;
 									}

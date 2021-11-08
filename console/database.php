@@ -1,4 +1,6 @@
 <?php 
+	// connection a la db
+
 	define('HOST', 'mysql-yohem.alwaysdata.net');
 	define('DB_NAME', 'yohem_papa');
 	define('USER', 'yohem');

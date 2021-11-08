@@ -1,20 +1,24 @@
 <?php 
-	if (isset($_POST['pseudo']) && isset($_POST['password'])) {
-		$pseudo = htmlspecialchars($_POST['pseudo']);
-		$password = htmlspecialchars($_POST['password']);
+	if (isset($_POST['pseudo']) && isset($_POST['password'])) { #si les champs son rempli
+		$pseudo = mysqli_escape_string(htmlspecialchars($_POST['pseudo'])); #securiter
+		$password = mysqli_escape_string(htmlspecialchars($_POST['password'])); #securiter
 
-		$check = $db ->prepare('SELECT pseudo, password FROM admin WHERE pseudo = ?');
+		// recupere la base de donner (pseudo et pass) qui correspond au pseudo
+		$check = $db ->prepare('SELECT pseudo, password FROM admin WHERE pseudo = ?'); # 
 		$check->execute(array($pseudo));
 
 		$data = $check->fetch();
 
+		// compte le nombre de resulta
 		$row = $check->rowCount();
-		if ($row >= 1) {
-			$password = hash('sha256', $password);
 
-			if ($data['password'] === $password) {
-				$_SESSION['admin'] = $data['pseudo'];
-				header('location:index.php');
+		if ($row >= 1) {#si il y a un pseudo qui correspond
+
+			$password = hash('sha256', $password); #hash les mot de pass (securiter)
+
+			if ($data['password'] === $password) { # si les 2 hash corresponde
+				$_SESSION['admin'] = $data['pseudo']; #crée une nouvelle session de connection
+				header('location:index.php'); # renvoi sur l'index
 			}else header('location:index.php?login_err=password');
 		}else header('location:index.php?login_err=pseudo');
 	}

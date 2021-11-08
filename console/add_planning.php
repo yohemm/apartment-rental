@@ -1,32 +1,41 @@
 <?php 
 		include '../includes/function.php';
+
 		$req = $db->query("SELECT name FROM house");
 		$houses_name = $req->fetchALL();
 		$name_dict = ['tiny' => 'Tiny House',
 			'maison'=>'Maison Brésaude',
 			'aparte'=>'Apartement La Bresse',
 			'gite'=>'Le gite des Pouhas'];
-		?>		
+		?>	
+
 		<form method="post" id="add_planning">
 			<h2>Ajouter un horraire sur le planning:</h2>
-			<?php if (isset($_POST['horraire'])) {
+
+			<?php if (isset($_POST['horraire'])) { # verifie que l'on a envoyer les horraire
 			extract($_POST);
-			if (!empty($arriver && $depart && $hebergement)) {
-				if (preg_match('%^20[0-9]{2}-[01][0-9]-[0-3][0-9]$%', $arriver) && preg_match('%^20[0-9]{2}-[01][0-9]-[0-3][0-9]$%', $depart)) {
+			if (!empty($arriver && $depart && $hebergement)) { #voir si le resultat des horrraires n'est pa vide
+				if (preg_match('%^20[0-9]{2}-[01][0-9]-[0-3][0-9]$%', $arriver) && preg_match('%^20[0-9]{2}-[01][0-9]-[0-3][0-9]$%', $depart)) { # verifie que la date est au bon format
+
+					// verifie que le logement soit bien dans la base de donné
 					$house_name_bool = false;
 					foreach ($houses_name as $house) {
 						if ($hebergement == $house[0]) {
 							$house_name_bool = true;
 						}
 					}
+
 					if ($house_name_bool) {
-						if (Order_date(date('Y-m-d'), $arriver)) {
-							if (Order_date($arriver, $depart)) {
+						if (Order_date(date('Y-m-d'), $arriver)) { # verifie que la date n'est pas passer
+							if (Order_date($arriver, $depart)) { #function dans function.php
+
+								// reserve la date
 								$q = $db->prepare('INSERT INTO reservation(date_arriver, date_depart, hebergement) VALUES (:depart, :arriver, :hebergement)');
 								$q ->execute([
 									':arriver' => $arriver,
 									':depart' => $depart,
 									':hebergement' => $hebergement]);
+
 								echo '<div class="success">Ajout au plannig réussit</div>';
 							}else{
 								echo '<div class="error">Les dates doivent etre mis dans l\'ordre</div>';
@@ -49,7 +58,7 @@
 			<select name="hebergement">
 				<?php foreach ($houses_name as $house) {
 					$houses_name = $house[0];
-					if ($name_dict[$houses_name]) {
+					if ($name_dict[$houses_name]) { # Si le nom peut etre styleser grace a la dict
 						echo "<option value='$houses_name'>$name_dict[$houses_name]</option>";
 					}else{
 						echo "<option value='$houses_name'>$houses_name</option>";

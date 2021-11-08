@@ -1,7 +1,9 @@
 	 <form method="post" name="">
 	 	<h2>Nouvelle page :</h2>
-	 	<?php if (isset($_POST['btn_create_page'])) {
-				if (!empty($_POST['name'] && $_POST['content'] && $_POST['price'])) {
+	 	<?php if (isset($_POST['btn_create_page'])) { # donné envoyer
+				if (!empty($_POST['name'] && $_POST['content'] && $_POST['price'])) { # donner pas vide
+
+					// envoi les donner de maniere securiser
 					$q = $db->prepare('INSERT INTO house (name, description, price) VALUES  (:name, :description, :price)');
 					$q ->execute([
 						'name' => $_POST['name'],

@@ -8,9 +8,13 @@ global $db; ?>
 </head>
 <body>
 	<?php 
-		if (isset($_GET['id'])) {
+		if (isset($_GET['id'])) { // si les donner on ete envoyer
+
+			// recuper la donner en fonction de l'id
 			$req = $db -> query("SELECT * FROM contatcs WHERE id = ".$_GET['id']);
 			$contact = $req ->fetchObject();?>
+
+			<!-- afficher les dinner -->
 			<div class="contactTitle">
 				<h3><?= $contact->motif ?></h3>
 				<p class="contactContent"><?= $contact->content;?>
