@@ -21,4 +21,4 @@ http://localhost/
 
 ## Authors
 
-* **Yohem** - *Initial work* - [Your GitHub username](https://github.com/yohemm)
+* **Yohem** - *Initial work* - [Yohem](https://github.com/yohemm)
