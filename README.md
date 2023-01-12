@@ -1,12 +1,24 @@
-# Location Logement
+# Apartment rental
+A showcase website for show rental and availability with admin systeme.
 
-Voici un site web de présentation et de vérification des disponibilité de logement.
-## Outils
-    - Front-end : JS pour slider
-    - Back-end : PHP, création de panel admin, bloquage de date en fonction du logement et changement de prix.
+## Getting Started
 
----
-## Support
+### Prerequisites
+- Xamp or Wamp
+- PHP
+- set myql server
+### Installation
 
-For support, email bloodoffairy@gmail.com .
+1. Clone the repository in the php server
+```git
+git clone https://github.com/yohemm/apartment-rental.git
+```
 
+## Usage
+
+1. Open website
+http://localhost/
+
+## Authors
+
+* **Yohem** - *Initial work* - [Your GitHub username](https://github.com/yohemm)
