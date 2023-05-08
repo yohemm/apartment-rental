@@ -11,7 +11,7 @@
 					</ul>
 				</li>
 				<li>
-					<a href="https://www.vosges-dans-le-vent.com/" target="_blank">activitées</a>
+					<a href="#" target="_blank">activitées</a>
 				</li>
 				<li>
 					<a href="contacts.php">contactes</a>

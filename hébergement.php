@@ -9,7 +9,7 @@
 	<?php include'includes/header.php' ?>
 	<script type="text/javascript"> 
 		setInterval(Change_title, 100); // appelle la fonction Change_title tout les 0.1s
-		text = 'Vosges dans le vent | HEBERGEMENT '; // title
+		text += ' | HEBERGEMENT | ';
 	</script>
 </head>
 <body>

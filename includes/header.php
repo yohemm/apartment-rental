@@ -12,5 +12,5 @@
 		}
 		var start = 0;
 
-	text = "Vosges dans le vent";
+	text = "Location d'appartement";
 </script>

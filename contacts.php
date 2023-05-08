@@ -6,7 +6,7 @@ global $db; ?>
 	<?php include'includes/header.php' ?>
 	<script type="text/javascript"> 
 		setInterval(Change_title, 100);
-		text = 'Vosges dans le vent | CONTACTS ';
+		text += ' | CONTACTS | ';
 	</script>
 </head>
 <body>

@@ -4,7 +4,7 @@
 	<?php include'includes/header.php' ?>
 	<script type="text/javascript"> 
 		setInterval(Change_title, 100);
-		text = 'Vosges dans le vent | ACCEUIL ';
+		text += ' | ACCEUIL | ';
 	</script>
 </head>
 <body>
