@@ -1,7 +1,7 @@
 <?php 
 	if (isset($_POST['pseudo']) && isset($_POST['password'])) { #si les champs son rempli
-		$pseudo = mysqli_escape_string(htmlspecialchars($_POST['pseudo'])); #securiter
-		$password = mysqli_escape_string(htmlspecialchars($_POST['password'])); #securiter
+		$pseudo = preg_replace('~[\x00\x0A\x0D\x1A\x22\x27\x5C]~u', '\\\$0', htmlspecialchars($_POST['pseudo'])); #securiter
+		$password = preg_replace('~[\x00\x0A\x0D\x1A\x22\x27\x5C]~u', '\\\$0', htmlspecialchars($_POST['password'])); #securiter
 
 		// recupere la base de donner (pseudo et pass) qui correspond au pseudo
 		$check = $db ->prepare('SELECT pseudo, password FROM admin WHERE pseudo = ?'); # 
@@ -13,13 +13,13 @@
 		$row = $check->rowCount();
 
 		if ($row >= 1) {#si il y a un pseudo qui correspond
+			$password = hash_hmac('sha256', $password, "appart2fou"); #hashage
+			
 
-			$password = hash('sha256', $password); #hash les mot de pass (securiter)
-
-			if ($data['password'] === $password) { # si les 2 hash corresponde
+			if ($data['password'] === substr($password,0, strlen($data['password']))) { # si les 2 hash corresponde
 				$_SESSION['admin'] = $data['pseudo']; #crée une nouvelle session de connection
 				header('location:index.php'); # renvoi sur l'index
-			}else header('location:index.php?login_err=password');
+			}else print(substr($password,0, strlen($data['password']))." ououououou " . $data['password']." aaaa ".$password);
 		}else header('location:index.php?login_err=pseudo');
 	}
  ?>

@@ -21,11 +21,11 @@ global $db; ?>
 			<input type="submit" name="contact">
 		</form>
 		<?php if(isset($_POST['contact'])){
-			$nom = mysqli_escape_string(htmlspecialchars($_POST['nom']));
-			$email = mysqli_escape_string(htmlspecialchars($_POST['email']));
-			$tel = mysqli_escape_string(htmlspecialchars($_POST['tel']));
-			$sujet = mysqli_escape_string(htmlspecialchars($_POST['sujet']));
-			$content = mysqli_escape_string(htmlspecialchars($_POST['content']));
+			$nom =  preg_replace('~[\x00\x0A\x0D\x1A\x22\x27\x5C]~u', '\\\$0', htmlspecialchars($_POST['nom']));
+			$email =  preg_replace('~[\x00\x0A\x0D\x1A\x22\x27\x5C]~u', '\\\$0', htmlspecialchars($_POST['email']));
+			$tel =  preg_replace('~[\x00\x0A\x0D\x1A\x22\x27\x5C]~u', '\\\$0', htmlspecialchars($_POST['tel']));
+			$sujet =  preg_replace('~[\x00\x0A\x0D\x1A\x22\x27\x5C]~u', '\\\$0', htmlspecialchars($_POST['sujet']));
+			$content =  preg_replace('~[\x00\x0A\x0D\x1A\x22\x27\x5C]~u', '\\\$0', htmlspecialchars($_POST['content']));
 			if (!empty($nom && $email && $tel && $sujet && $content)) {
 				if (preg_match("%^[a-z A-Z]+$%", $nom)&&preg_match('%^[\w.]+@[a-zA-Z]+.[a-zA-Z]{2,6}$%', $email) && preg_match('%^((\+[0-9]{2})|0)[0-9]{9}$%', $tel)) {
 					$q = $db->prepare('INSERT INTO message(name, motif, content, email, phone) VALUES (:name, :motif, :content, :email, :phone)');
