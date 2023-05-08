@@ -1,4 +1,5 @@
-<?php include 'database.php'; ?>
+<?php if (!isset($db))include 'database.php'; ?>
+
 <form method="post">
 	<h3>Inscription Admin:</h3>
 
