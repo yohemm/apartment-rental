@@ -1,7 +1,7 @@
 <?php if (!isset($db))include 'database.php'; ?>
 
 <form method="post">
-	<h3>Inscription Admin:</h3>
+	<h3>Inscription De Nouveau Admin:</h3>
 
 	<?php 
 		if (isset($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['password_retype'])) { // si les donner son pas vide
@@ -19,16 +19,18 @@
 			$row = $check->rowCount();
 
 			if ($row <= 0) { # si un pseudo existe
-				if (strlen($pseudo) <= 100) { # longeur du nom < 100
+				if (strlen($pseudo) <= 20) { # longeur du nom < 100
 					if ($password == $password_retype) { # similariter des pass
 						$ip = $_SERVER['REMOTE_ADDR'];
 
 						#creation du compte
 						$insert = $db->prepare('INSERT INTO admin(pseudo, password, ip) VALUES(:pseudo, :password, :ip)');
-						$insert->execute(array(
+						var_dump($insert);
+						var_dump(hash_hmac('sha256', $password, "appart2fou"));
+						var_dump($insert->execute([
 							'pseudo' => $pseudo,
 							'password' => hash_hmac('sha256', $password, "appart2fou"),
-							'ip' => $ip));
+							'ip' => $ip]));
 
 						echo '<div class="success">Inscription reussit</div>';
 					}else header('location:index.php?inscription_err=password');

@@ -1,4 +1,6 @@
 <?php 
+
+		if($_SERVER['REQUEST_URI'] == '/'.substr(__FILE__, strlen($_SERVER['CONTEXT_DOCUMENT_ROOT'])))header('location:/');
 		// recupere les donner dans l'ordre du plus resen au plus vieux
 		$req = $db -> query("SELECT * FROM message ORDER BY id DESC");
 		$CONTACTS = $req ->fetchALL();

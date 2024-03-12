@@ -1,12 +1,13 @@
 <?php 
-	include 'includes/function.php';
-	include 'console/database.php'; 
+	
+	include_once $_SERVER['CONTEXT_DOCUMENT_ROOT'].'includes/function.php';
+	include_once $_SERVER['CONTEXT_DOCUMENT_ROOT'].'console/database.php';
 	global $db;
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<?php include'includes/header.php' ?>
+	<?php include_once $_SERVER['CONTEXT_DOCUMENT_ROOT'].'includes/header.php' ?>
 	<script type="text/javascript"> 
 		setInterval(Change_title, 100); // appelle la fonction Change_title tout les 0.1s
 		text += ' | HEBERGEMENT | ';
@@ -17,29 +18,44 @@
 	<div id="content">
 		<div id="hebergement">
 		<?php
+			include_once $_SERVER['CONTEXT_DOCUMENT_ROOT']."includes/carrouselle.php";
 			if (isset($_GET['name'])) { // verifie que le que la variable n'est pas vide
-				$name_dict = ['tiny' => 'Tiny House',
-				'maison'=>'Maison Brésaude',
-				'aparte'=>'Apartement La Bresse',
-				'gite'=>'Le gite des Pouhas'];
-				$name = $_GET['name'];
-				//prend les donner de la base de maniere securiser
-				$req = $db -> query("SELECT * FROM `house` WHERE name ='".$name."'");
-				$page = $req -> fetchObject(); 
+				
+				$page = getVisible($_GET['name']);
+				$files = glob('images/'.$page->id.'/car-*.*');
+				generateCarousselle($files);
 				$price = $page->price;?>
-				<h3 id="name_hebergement"><?= $name_dict[$name]?></h3><!-- affiche le nom long du dans le dict -->
-				<p><?php 
+				<h1 id="name_hebergement"><?= $page->name?> </h1>
+				<div id='hebergement-unique-content'>
+					<h2 id="desc_hebergement"><?= $page->description?> </h2>
+					<?php 
+					$alert = getAlert($page->alert);
+					if($alert != null){
+					?>
+					<div class="info-alert">
+						<div class="info-text">
+							<p><?= $alert->content ?></p>
+						</div>
+					</div>
+					<?php 
+						}
+					?>
+					<p><?php 
 
 					// remplace mots clef par les variable ou balise
-					$page->description = str_replace("price",$price."€",$page->description);
-					$page->description = str_replace("name",$name_dict[$name],$page->description);
-					$page->description = str_replace("\n",'<br/>',$page->description);
-					$page->description = str_replace("endimg",'" width="500px"" height="250px"/>',$page->description);
-					$page->description = str_replace("img",'<img alt="photo logement" class="img_hebergement"src="',$page->description);
-					echo $page->description;/*affiche la desccri^ption*/
-				?></p>
-
-				<p>Le prix moyen est de <?= $price?>€/par jour</p>
+					$page->content = str_replace("price",$price."€",$page->content);
+					$page->content = str_replace("name",$_GET['name'],$page->content);
+					$page->content = str_replace("\n",'<br/>',$page->content);
+					// $page->content = str_replace("endimg",'" width="500px"" height="250px"/>',$page->content);
+					// $page->content = str_replace("img",'<img alt="photo logement" class="img_hebergement"src="',$page->content);
+					echo $page->content;/*affiche la desccri^ption*/
+					?></p>
+				</div>
+				<div id='hebergement-common-content'>
+					<p>Hébergement pour une durée de <?= $page->minimum_night?> jours minimum, pouvant accueillir <?= $page->maximum_personnes?> personnes.</p>
+					<p>À partir de <?= $price?>€* par jour.</p>
+					<p class="litle">*Le prix est à titre indicatif et peut varier en fonction des saisons.</p>
+				</div>
 				<?php
 			}
 			if (isset($_POST['horraire'])) {
@@ -49,34 +65,20 @@
 					if (preg_match('%^20[0-9]{2}-[01][0-9]-[0-3][0-9]$%', $_POST['arriver']) && preg_match('%^20[0-9]{2}-[01][0-9]-[0-3][0-9]$%', $_POST['depart'])) {
 						if (Order_date($_POST['arriver'], $_POST['depart'])) {/*verifier que les horraire soit dans l'ordre*/
 
-							$query = $db->query("SELECT `house`.name, `reservation`.date_arriver, `reservation`.date_depart FROM `house` JOIN `reservation` ON `house`.name = `reservation`.hebergement WHERE `house`.name = '$name'");
-							$all_reservations = $query->fetchALL();
-							$date_disponible = false;
+							$date_disponible = verifyDateDispo($page->id, $_POST['arriver'], $_POST['depart']);
 
-							// verifie la diponibilité des date
-							foreach ($all_reservations as $reservation) {
-								if (Order_date($reservation[1], $_POST['arriver'] )) { #verifie que les date sois dans le bon ordre
-									if (Order_date($reservation[2], $_POST['arriver'])) {
-										$date_disponible = true;
-									}
-								}else{
-									if (Order_date($_POST['depart'],$reservation[2])) {
-										$date_disponible = true;
-									}
-								}
-							}
-							if ($date_disponible) {
-								echo "<h3 class=resulte_date>Vos créneaux horraires du ".$_POST['arriver']." au ".$_POST['depart']." sont disponible veuillez nous contacter pour réserver... </h3>";
-							}else{
-								echo "<h3 class=resulte_date>Vos créneaux horraires du ".$_POST['arriver']." au ".$_POST['depart']." sont actuellement indisponible... </h3>";
-							}
-						}else{
-							echo '<div class="error">Veuillez mettre les dates dans le bonne ordre</div>';		
-						}
+							if ($date_disponible) {?>
+								<h3 class=resulte_date>Vos créneaux horraires du <?= $_POST['arriver']?> au <?= $_POST['depart']?> sont disponible veuillez nous contacter pour réserver... </h3>
+							<?php }else{?>
+								<h3 class=resulte_date>Vos créneaux horraires du <?= $_POST['arriver']?> au <?= $_POST['depart']?> sont actuellement indisponible... </h3>
+							<?php } ?>
+						<?php }else{?>
+							<div class="error">Veuillez mettre les dates dans le bonne ordre</div>		
+						<?php }
 					}
-				}else{
-								echo '<div class="error">Veuillez remplir tous les champs!</div>';					
-				}
+				}else{ ?>
+								<div class="error">Veuillez remplir tous les champs!</div>					
+				<?php }
 			}
 		if (isset($_GET['name'])){
 		 ?>
@@ -88,7 +90,7 @@
 			<input type="date" name="depart" required="">
 			<input type="submit" name="horraire">
 		</form>
-		<p class="litle">*Ce formulaire est juste à titre informatif, veuillez contacter la boutique pour réserver</p>
+		<p class="litle">*Ce formulaire est juste à titre informatif, <a href="contacts.php">veuillez contacter la boutique pour réserver.</a></p>
 		</div>
 		<?php }else{
 				include 'includes/all_hebergement.php';

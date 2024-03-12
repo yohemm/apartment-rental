@@ -1,20 +1,21 @@
 		<nav>
 			<ul id="main-menu">
-				<li><a href="index.php">acceuil</a></li>
+				<li><a href="index.php">accueil</a></li>
 				<li class="menu-deroulant">
 					<a href="hébergement.php">hébergements</a>
 					<ul class="sous-menu">
-						<li><a href="hébergement.php?name=tiny">Tiny House</a></li>
-						<li><a href="hébergement.php?name=maison">Maison brésaude</a></li>
-						<li><a href="hébergement.php?name=aparte">L'aparte brésaud</a></li>
-						<li><a href="hébergement.php?name=gite">Le gite des pouhas</a></li>
+						<?php
+							include_once $_SERVER['CONTEXT_DOCUMENT_ROOT'].'console/database.php';
+							$req = allVisible();
+							foreach($req as $house){echo "<li><a href='hébergement.php?name=".$house['name']."'>".$house['name']."</a></li>";};
+						?>
 					</ul>
 				</li>
 				<li>
-					<a href="#" target="_blank">activitées</a>
+					<a href="https://www.vosges-dans-le-vent.com/" target="_blank">activités</a>
 				</li>
 				<li>
-					<a href="contacts.php">contactes</a>
+					<a href="contacts.php">contact</a>
 				</li>
 			</ul>
 		</nav>

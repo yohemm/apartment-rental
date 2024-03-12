@@ -30,3 +30,39 @@ bon cadeau
 
 menu : boutique en ligne, hébergement(a la place  
 visuelle de bois menu déroulant
+
+
+
+Nombre de personne maximum par appart?? NB MAX JUSTE
+Un nombre de nuit minimum
+all_herbergement dynamique??
+
+
+redirection vers leboncoin
++ page google
+
+refaire le style de tous les form
+
+montagnes + famille ou entre amies
+
+accueil personnalisation + alert
+
+gites-hautes-vosges.fr
+
+centrer le titrage et sous titrage des hébergement
+
+reload la console avec message en get au lieu de messages direct
+
+alert posable sur n'import quelle page (une alert par page) en dessous du titre sur des pages
+
+
+MODEL
+	
+
+Interface
+idable
+cotentable
+deletable
+inserable
+
+change getAll seulement au save

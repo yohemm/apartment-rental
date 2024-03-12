@@ -1,4 +1,5 @@
 <?php include 'database.php';
+if($_SERVER['REQUEST_URI'] == '/'.substr(__FILE__, strlen($_SERVER['CONTEXT_DOCUMENT_ROOT'])))header('location:/');
 	global $db;
 ?>
 <!DOCTYPE html>

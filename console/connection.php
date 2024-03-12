@@ -1,4 +1,5 @@
 <?php 
+	if($_SERVER['REQUEST_URI'] == '/'.substr(__FILE__, strlen($_SERVER['CONTEXT_DOCUMENT_ROOT'])))header('location:/');
 	if (isset($_POST['pseudo']) && isset($_POST['password'])) { #si les champs son rempli
 		$pseudo = preg_replace('~[\x00\x0A\x0D\x1A\x22\x27\x5C]~u', '\\\$0', htmlspecialchars($_POST['pseudo'])); #securiter
 		$password = preg_replace('~[\x00\x0A\x0D\x1A\x22\x27\x5C]~u', '\\\$0', htmlspecialchars($_POST['password'])); #securiter

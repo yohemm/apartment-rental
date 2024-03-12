@@ -1,16 +1,16 @@
-<?php include 'console/database.php';
+<?php include_once $_SERVER['CONTEXT_DOCUMENT_ROOT'].'console/database.php';
 global $db; ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<?php include'includes/header.php' ?>
+	<?php include_once $_SERVER['CONTEXT_DOCUMENT_ROOT'].'includes/header.php' ?>
 	<script type="text/javascript"> 
 		setInterval(Change_title, 100);
 		text += ' | CONTACTS | ';
 	</script>
 </head>
 <body>
-	<?php include "includes/menu-nav.php" ?>
+	<?php include_once $_SERVER['CONTEXT_DOCUMENT_ROOT']."includes/menu-nav.php" ?>
 	<div id="content">
 		<form method="post" style="text-align: center;" id="contact_form">
 			<h3>Votre nom :</h3><input type="text" name="nom" placeholder="Votre nom"><br>

@@ -1,6 +1,6 @@
 <?php 
 session_start();
-include 'database.php';
+include_once 'database.php';
 global $db; ?>
 <!DOCTYPE html>
 <html>
