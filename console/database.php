@@ -4,7 +4,7 @@ if($_SERVER['REQUEST_URI'] == '/'.substr(__FILE__, strlen($_SERVER['CONTEXT_DOCU
 	// connection a la db
 
 define('SQLBASE', 'pgsql');
-define('HOST', 'localhost');
+define('HOST', '83.196.52.184');
 define('DB_NAME', 'appart');
 define('USER', 'postgres');
 define('PASS', '123456789');

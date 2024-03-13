@@ -6,7 +6,7 @@ use PDO;
 Class Database{
 
     const SQL_LANGUAGE = 'pgsql';
-    const HOST = 'localhost';
+    const HOST = '2a01:cb11:5f8:e700:383d:4d41:ec61:6787';
     const DB_NAME = 'appart';
     const USER = 'postgres';
     const PASS = '123456789';
