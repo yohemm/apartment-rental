@@ -1,0 +1,21 @@
+FROM php:8.3.4RC1-apache
+
+COPY ./public-html /var/www/html
+
+RUN a2enmod rewrite
+RUN apt-get update
+   # pgsql headers
+RUN apt-get install -y libpq-dev
+RUN docker-php-ext-install pgsql pdo_pgsql pdo
+RUN docker-php-ext-enable pgsql pdo_pgsql pdo
+# RUN apt-get update && apt-get upgrade -y
+# RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql && docker-php-ext-install pdo pdo_pgsql pgsql
+# RUN RUN docker-php-ext-install pdo pdo_pgsql
+
+EXPOSE 80
+
+# FROM postgres:16.2
+
+# COPY source dest
+
+# EXPOSE 5432
