@@ -1,4 +1,3 @@
-# Use postgres/example user/password credentials
 version: '3.9'
 services:
   web:
@@ -15,18 +14,12 @@ services:
   db:
     image: postgres:16.2 
     restart: always
-    # set shared memory limit when using docker-compose
     shm_size: 128mb
     volumes:
-      - ./init.sql:/docker-entrypoint-initdb.d/
-    # or set shared memory limit when deploy via swarm stack
-    #volumes:
-    #  - type: tmpfs
-    #    target: /dev/shm
-    #    tmpfs:
-    #      size: 134217728 # 128*2^20 bytes = 128Mb
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       POSTGRES_PASSWORD: 123456789
+      POSTGRES_DB: appart
       POSTGRES_USER: postgres
     networks:
       - webnet
