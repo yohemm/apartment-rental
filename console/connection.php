@@ -19,7 +19,7 @@
 
 			if ($data['password'] === substr($password,0, strlen($data['password']))) { # si les 2 hash corresponde
 				$_SESSION['admin'] = $data['pseudo']; #crée une nouvelle session de connection
-				header('location:http://localhost:82/console/index.php', true, 302); # renvoi sur l'index
+				header('location:index.php'); # renvoi sur l'index
 				die();
 			}else print(substr($password,0, strlen($data['password']))." ououououou " . $data['password']." aaaa ".$password);
 		}else header('location:index.php?login_err=pseudo');
