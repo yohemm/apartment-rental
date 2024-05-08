@@ -2,16 +2,18 @@
 <html>
 <head>
 	<?php include'includes/header.php' ?>
-	<script type="text/javascript"> 
+	
+	<title>Gites Hautes Vosges</title>
+	<!-- <script type="text/javascript"> 
 		setInterval(Change_title, 100);
 		text += ' | ACCUEIL | ';
-	</script>
+	</script> -->
 </head>
 <body>
 	<?php include "includes/menu-nav.php" ?>
 	<div id="content">
 		<?php include "includes/carrouselle.php";
-		generateCarousselle(["images/tiny-house.jpg", "images/20210808_200312.jpg", "images/20210808_200104.jpg", "images/20210808_200350.jpg", "images/20210808_200350.jpg"]);
+		generateCarousselle(["images/20210808_200312.jpg", "images/20210808_200104.jpg", "images/20210808_200350.jpg", "images/20210808_200350.jpg"]);
 		$page = getPage('accueil');
 		?>
 

@@ -1,6 +1,8 @@
 
 <div class="alert-manager">
     
+<h3>Alertes</h3> 
+<h4>Alerte existantes :</h4> 
 <?php
     
 require_once 'database.php';
@@ -85,12 +87,14 @@ function printSelect($value, $text){
 }
 ?>
 <form method="post">
+    <h4>Nouvelles Alerte :</h4>
     <label for="content">contenue : </label>
     <textarea name="content" id="content" cols="30" rows="10"></textarea>
     <input type="submit" value="Nouveau" name="new">
 </form>
 
 <form method="post">
+    <h4>Association d'une alerte avec des pages :</h4>
     <!-- select pour une page -->
     <select name="pages">
         <?php

@@ -1,6 +1,6 @@
 <?php 
 
-if($_SERVER['REQUEST_URI'] == '/'.substr(__FILE__, strlen($_SERVER['CONTEXT_DOCUMENT_ROOT'])))header('location:/');
+// if($_SERVER['REQUEST_URI'] == '/'.substr(__FILE__, strlen($_SERVER['CONTEXT_DOCUMENT_ROOT'])))header('location:/');
 	// connection a la db
 
 define('SQLBASE', $_ENV['DB_SYS']);

@@ -1,5 +1,5 @@
 <?php 
-		if($_SERVER['REQUEST_URI'] == '/'.substr(__FILE__, strlen($_SERVER['CONTEXT_DOCUMENT_ROOT'])))header('location:/');
+		// if($_SERVER['REQUEST_URI'] == '/'.substr(__FILE__, strlen($_SERVER['CONTEXT_DOCUMENT_ROOT'])))header('location:/');
 		include '../includes/function.php';
 		
 		$houses = $db->query("SELECT * FROM  get_house_paire_name_id()")->fetchALL()

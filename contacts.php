@@ -4,10 +4,11 @@ global $db; ?>
 <html>
 <head>
 	<?php include_once $_SERVER['CONTEXT_DOCUMENT_ROOT'].'/includes/header.php' ?>
-	<script type="text/javascript"> 
+	<title>Gites Hautes Vosges</title>
+	<!-- <script type="text/javascript"> 
 		setInterval(Change_title, 100);
 		text += ' | CONTACTS | ';
-	</script>
+	</script> -->
 </head>
 <body>
 	<?php include_once $_SERVER['CONTEXT_DOCUMENT_ROOT']."/includes/menu-nav.php" ?>
@@ -47,6 +48,9 @@ global $db; ?>
 				echo '<div class="error">Veuillez remplir tous les champs!</div>';
 			}
 		} ?>
+	<address>
+		<a href="mailto:gites.hautes.vosges@gmail.com">Possibilté de contact par mail via gites.hautes.vosges@gmail.com</a>
+	</address>
 	</div>
 	<?php include 'includes/copy-right.php' ?>
 </body>

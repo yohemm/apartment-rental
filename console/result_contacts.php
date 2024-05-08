@@ -1,5 +1,5 @@
 <?php include 'database.php';
-if($_SERVER['REQUEST_URI'] == '/'.substr(__FILE__, strlen($_SERVER['CONTEXT_DOCUMENT_ROOT'])))header('location:/');
+// if($_SERVER['REQUEST_URI'] == '/'.substr(__FILE__, strlen($_SERVER['CONTEXT_DOCUMENT_ROOT'])))header('location:/');
 	global $db;
 ?>
 <!DOCTYPE html>
@@ -7,7 +7,7 @@ if($_SERVER['REQUEST_URI'] == '/'.substr(__FILE__, strlen($_SERVER['CONTEXT_DOCU
 <head>
 	<meta charset="utf-8">
 	<?php include '../includes/header.php'; ?>
-	<title>Vosges dans le vent | Message recus</title>
+	<title>Gites Hautes Vosges</title>
 </head>
 <body>
 	<?php 

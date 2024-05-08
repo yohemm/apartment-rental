@@ -1,2 +1,1 @@
-
-<?php if (!isset($_SESSION['admin']) || empty($_SESSION['admin'])) header('location:/');?>
+<!-- <?php if (!isset($_SESSION['admin']) || empty($_SESSION['admin'])) header('location:'.$_SERVER['CONTEXT_DOCUMENT_ROOT'].'/console'); ?> -->

@@ -1,5 +1,5 @@
 <?php 
-if($_SERVER['REQUEST_URI'] == '/'.substr(__FILE__, strlen($_SERVER['CONTEXT_DOCUMENT_ROOT'])))header('location:/');
+// if($_SERVER['REQUEST_URI'] == '/'.substr(__FILE__, strlen($_SERVER['CONTEXT_DOCUMENT_ROOT'])))header('location:/');
 function getExtension(string $folderName ){
 	return end(explode('.', $folderName));
 }
@@ -42,11 +42,11 @@ $accueil = getPage('accueil');
 include 'manage_alert.php';
 
 if (isset($_POST['accueil'])) { //si on appui sur le btn
-	if (!empty($_POST['title'] && $_POST['sub_title'] && $_POST['content'])) { // si les donner son pas vide
+	if (!empty($_POST['title'] && $_POST['content'])) { // si les donner son pas vide
 		// si le nom a changer on le change
-		updateSingle('page', 'accueil', 'title', 'title', $accueil->title);
-		updateSingle('page', 'accueil', 'sub_title', 'sub_title', $accueil->sub_title);
-		updateSingle('page', 'accueil', 'content', 'content', $accueil->content);
+		updateSingle('page', 'accueil', 'title', 'title', 'name', $accueil->title);
+		updateSingle('page', 'accueil', 'sub_title', 'sub_title', 'name', $accueil->sub_title==null?"":$accueil->sub_titles);
+		updateSingle('page', 'accueil', 'content', 'content', 'name', $accueil->content);
 		echo '<div class="success">Page modifié</div>';
 	}else{
 		echo '<div class="error">Veuillez remplir tous les champs!</div>';
@@ -55,12 +55,13 @@ if (isset($_POST['accueil'])) { //si on appui sur le btn
 ?>
 
 <form method="post">
+	<h2>Accueil</h2>
 	<div>
-		<label for="title"></label>
+		<label for="title">Titre :</label>
 		<textarea name="title" id="title" cols="30" rows="10"><?= $accueil->title ?></textarea>
-		<label for="sub_title"></label>
+		<label for="sub_title">Description/sous-titre :</label>
 		<textarea name="sub_title" id="sub_title" cols="30" rows="10"><?= $accueil->sub_title ?></textarea>
-		<label for="content"></label>
+		<label for="content">Contenue</label>
 		<textarea name="content" id="content" cols="30" rows="10"><?= $accueil->content ?></textarea>
 	</div>
 	<button type="submit" name="accueil">Changer l'accueil</button>
@@ -72,7 +73,7 @@ if (isset($_POST['accueil'])) { //si on appui sur le btn
 	<li>'name' : renvoi le nom de la page</li>
 </ul>
 <h1>/!\ alignement des titres non dévelloper</h1>
-<h1>/!\ Formulaire accueil + alertenon dévelloper</h1>
+<!-- <h1>/!\ Formulaire accueil + alertenon dévelloper</h1> -->
 
 <?php 
 
@@ -245,7 +246,7 @@ function insertImg(number){
 	var style = document.getElementById('style').checked;
 	var height = document.getElementById('height').value;
 	var align = document.querySelector("input[name=align]:checked").id;
-	var textarea = document.getElementsByName("content_2")[0];
+	var textarea = document.getElementsByName("content_"+number)[0];
 	textarea.value += '<span '+(line? 'class="break-line"':'')+'><img alt="'+alter+'" '+(style?'class="img_hebergement" ':'') + (align!='center'?'style="float:'+align+';" ' :'')+'src="'+imgSelected.id.slice(1, imgSelected.id.length)+'" ' +(height ==''?'':'height="'+height+'px" ')+ (width == ''?'':'width="'+width+'px" ')+'/></span>';	
 
 	

@@ -10,7 +10,7 @@
 	<?php include_once $_SERVER['CONTEXT_DOCUMENT_ROOT'].'/includes/header.php' ?>
 	<script type="text/javascript"> 
 		setInterval(Change_title, 100); // appelle la fonction Change_title tout les 0.1s
-		text += ' | HEBERGEMENT | ';
+		<title><?= $_GET['name'] ?> | Gites Hautes Vosges</title>
 	</script>
 </head>
 <body>
@@ -27,7 +27,8 @@
 				$price = $page->price;?>
 				<h1 id="name_hebergement"><?= $page->name?> </h1>
 				<div id='hebergement-unique-content'>
-					<h2 id="desc_hebergement"><?= $page->description?> </h2>
+					
+					<?php if($page->description != null)?> <h2 id="desc_hebergement"><?= $page->description?> </h2>
 					<?php 
 					$alert = getAlert($page->alert);
 					if($alert != null){
@@ -53,8 +54,8 @@
 				</div>
 				<div id='hebergement-common-content'>
 					<p>Hébergement pour une durée de <?= $page->minimum_night?> jours minimum, pouvant accueillir <?= $page->maximum_personnes?> personnes.</p>
-					<p>À partir de <?= $price?>€* par nuitée.</p>
-					<p class="litle">*Le prix est à titre indicatif et peut varier en fonction des saisons.</p>
+					<!-- <p>À partir de <?= $price?>€* par nuitée.</p> -->
+					<!-- <p class="litle">*Le prix est à titre indicatif et peut varier en fonction des saisons.</p> -->
 				</div>
 				<?php
 			}

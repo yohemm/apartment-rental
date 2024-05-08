@@ -1,4 +1,4 @@
-<?php if (!isset($db))include 'database.php'; ?>
+<?php if (!isset($db))include_once 'database.php'; ?>
 
 <form method="post">
 	<h3>Inscription De Nouveau Admin:</h3>
@@ -33,9 +33,9 @@
 							'ip' => $ip]));
 
 						echo '<div class="success">Inscription reussit</div>';
-					}else header('location:index.php?inscription_err=password');
-				}else header('location:index.php?inscription_err=pseudo');
-			}else header('location:index.php?inscription_err=already');
+					}else header('location:index.php?inscription_err=password', true, 302);
+				}else header('location:index.php?inscription_err=pseudo', true, 302);
+			}else header('location:index.php?inscription_err=already', true, 302);
 		}
  	?>
 	<input type="text" name="pseudo" placeholder="Votre pseudo..." autocomplete="off">

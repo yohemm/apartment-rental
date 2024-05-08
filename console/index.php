@@ -1,7 +1,6 @@
 <?php 
 session_start();
-include_once 'database.php';
-global $db; ?>
+include_once 'database.php';?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,10 +8,11 @@ global $db; ?>
 	<link rel="stylesheet" type="text/css" href="../includes/style.css">
 	<link href="images/favicon.ico" rel="shortcut icon" type="image/ico" />
 	<?php include '../includes/header.php' ?>
-	<script type="text/javascript"> 
+	<!-- <script type="text/javascript"> 
 		setInterval(Change_title, 100);
 		text += ' | ADMIN | ';
-	</script>
+	</script> -->
+	<title>Gites Hautes Vosges</title>
 </head>
 <body>
 	<div id="content">

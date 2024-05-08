@@ -1,5 +1,5 @@
 <?php 
-	if($_SERVER['REQUEST_URI'] == '/'.substr(__FILE__, strlen($_SERVER['CONTEXT_DOCUMENT_ROOT'])))header('location:/');
+	// if($_SERVER['REQUEST_URI'] == '/'.substr(__FILE__, strlen($_SERVER['CONTEXT_DOCUMENT_ROOT'])))header('location:/');
 	if (isset($_POST['pseudo']) && isset($_POST['password'])) { #si les champs son rempli
 		$pseudo = preg_replace('~[\x00\x0A\x0D\x1A\x22\x27\x5C]~u', '\\\$0', htmlspecialchars($_POST['pseudo'])); #securiter
 		$password = preg_replace('~[\x00\x0A\x0D\x1A\x22\x27\x5C]~u', '\\\$0', htmlspecialchars($_POST['password'])); #securiter
@@ -19,7 +19,8 @@
 
 			if ($data['password'] === substr($password,0, strlen($data['password']))) { # si les 2 hash corresponde
 				$_SESSION['admin'] = $data['pseudo']; #crée une nouvelle session de connection
-				header('location:index.php'); # renvoi sur l'index
+				header('location:http://localhost:82/console/index.php', true, 302); # renvoi sur l'index
+				die();
 			}else print(substr($password,0, strlen($data['password']))." ououououou " . $data['password']." aaaa ".$password);
 		}else header('location:index.php?login_err=pseudo');
 	}
