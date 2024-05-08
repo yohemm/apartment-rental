@@ -1,0 +1,27 @@
+# A faire
+Sous titre nullable et pas afficher si vide
+
+# Modification demandé
+## Acceuil
+enlever la tiny du carousselle
+enlevé pour ts type de vacancier
+## Hébergement
+Enlever les phrase préfaite
+### Le Bîhé
+Location d'un appartement pour 4 personnes au centre de La Bresse.
+
+## Contact
+Veuillez nous contacter pour toute réservation
+
+# Admin
+## Cconnection 
+raffraichissement auto
+## Acceuil
+Fait :  rajouter nom des formulaires
+Fait :  /!\ champs vide pourr le sous titre
+
+rajouté image selecteur
+
+## Hébergement
+Fait : Image du contenue se met que sur la premiere image
+
