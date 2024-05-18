@@ -13,7 +13,7 @@
 	<?php include "includes/menu-nav.php" ?>
 	<div id="content">
 		<?php include "includes/carrouselle.php";
-		generateCarousselle(["images/20210808_200312.jpg", "images/20210808_200104.jpg", "images/20210808_200350.jpg", "images/20210808_200350.jpg"]);
+		generateCarousselle(glob('./images/carouselle/*.{jpg,jpeg,png,gif,avif,webp}', GLOB_BRACE));// ;["images/20210808_200312.jpg", "images/20210808_200104.jpg", "images/20210808_200350.jpg", "images/20210808_200350.jpg"]
 		$page = getPage('accueil');
 		?>
 

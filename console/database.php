@@ -23,9 +23,7 @@ function updateSingle(string $table, string $keyLine, string $nameColumToUpdate,
 	global $db;
 	if($oldValue === $_POST[$nameInput]) return true;
 	$q = $db->prepare("UPDATE $table SET $nameColumToUpdate = :change WHERE $columKey='$keyLine'");
-	var_dump($q);
 	$res = $q->execute(['change' => $_POST[$nameInput]]);
-	var_dump($res);
 	return $res;
 }
 function allVisible():array{
@@ -103,8 +101,3 @@ function verifyDateDispo(int $id, $startingDate, $endingDate):bool{
 	]);
 	return $query->fetchColumn();
 }
-
-
-	
-
- ?>

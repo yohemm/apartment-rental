@@ -1,13 +1,23 @@
-<?php 
+<?php
+include 'redirection.php';
+include 'connection.php';
+include 'database.php';
+include 'modify_page.php';
 session_start();
-include_once 'database.php';?>
+
+verifyConnection($db);
+executeForms($db);
+// var_dump($db);
+if(isset($_GET['refresh']))hardRefresh();
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="../includes/style.css">
 	<link href="images/favicon.ico" rel="shortcut icon" type="image/ico" />
-	<?php include '../includes/header.php' ?>
+	<?php include '../includes/header.php';?>
 	<!-- <script type="text/javascript"> 
 		setInterval(Change_title, 100);
 		text += ' | ADMIN | ';
@@ -18,7 +28,31 @@ include_once 'database.php';?>
 	<div id="content">
 		<a href="../index.php" id="back_btn"><img src="../images/back_arrow.png" width="40px" alt="slider d'images"></a>
 		<h1 style="text-align: center;">ADMIN</h1>
-		<?php 
+		<?php
+		if (isset($_GET['success'])) {
+			$success = htmlspecialchars($_GET['success']);
+
+			switch ($success) {
+				case 'image' :
+						?><div class="success">Suppression d'images reussit!</div> <?php
+
+					break;
+				default:
+						?><div class="success">Suppression d'images reussit!</div> <?php
+
+					break;
+			}
+		}
+		if (isset($_GET['error'])) {
+			$err = htmlspecialchars($_GET['error']);
+
+			switch ($err) {
+				default:
+						?><div class="error">Erreur inconue</div> <?php
+
+					break;
+			}
+		}
 		if (isset($_GET['login_err'])) {
 			$err = htmlspecialchars($_GET['login_err']);
 
@@ -59,17 +93,19 @@ include_once 'database.php';?>
 					break;
 			}
 		}
-		if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) { ?>
+		if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) { 
+		?>
 		<div id="admin-content">
 			<div id="frist-content"><?php include 'contactview.php'; 
 			include 'add_planning.php'; ?></div>
 			<div id="second-content"><?php include 'inscription.php';
 			include 'create_page.php'; ?></div>
-			<div id="third-content"><?php include 'modify_page.php'; ?></div>
+			<div id="third-content"><?php printForms(); ?></div>
 		 </div>
 		<?php }else {
-			include'connection.php';
-		} ?>
+			echo(connectionForm());
+		}
+		?>
 	 </div>
-</body>
+	</body>
 </html>
